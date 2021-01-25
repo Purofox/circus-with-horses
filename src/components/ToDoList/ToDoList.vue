@@ -230,6 +230,7 @@
     font-size: 30px;
     font-weight: 100;
     margin: 0;
+    padding: 10px 0;
     text-align: center;
   }
 
@@ -238,10 +239,7 @@
     border: 1px solid #999;
     box-sizing: border-box;
     color: inherit;
-    font-size: 24px;
-    font-family: inherit;
-    font-weight: inherit;
-    line-height: 1.4em;
+    font-size: 20px;
     margin: 0;
     padding: 6px;
     position: relative;
@@ -300,7 +298,7 @@
 
   .todo-list li {
     position: relative;
-    font-size: 24px;
+    font-size: 20px;
     border-bottom: 1px solid #ededed;
   }
 
@@ -325,16 +323,14 @@
   }
 
   .todo-list li .toggle {
-    text-align: center;
-    width: 40px;
-    height: auto;
-    position: absolute;
-    top: 0;
+    border: none;
     bottom: 0;
+    height: auto;
     margin: auto 0;
-    border: none; /* Mobile Safari */
-    -webkit-appearance: none;
-    appearance: none;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    width: 40px;
   }
 
   .todo-list li .toggle {
