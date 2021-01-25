@@ -19,6 +19,7 @@ export default {
   html,
   body {
     margin: 0;
+    height: 100%;
     padding: 0;
   }
 
@@ -46,5 +47,11 @@ export default {
     color: #4d4d4d;
     font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-weight: 300;
+  }
+
+  #app {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
   }
 </style>

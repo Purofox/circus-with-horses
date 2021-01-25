@@ -1,77 +1,64 @@
 <template>
-  <section class="todoapp">
-    <h1>Education plan</h1>
-    <div class="header">
-      <input
-          class="new-todo"
-          autofocus
-          autocomplete="off"
-          placeholder="What needs to be done?"
-          v-model="newTodo"
-          @keyup.enter="addTodo"
-      />
-    </div>
-    <div class="main" v-show="todos.length" v-cloak>
-      <input
-          id="toggle-all"
-          class="toggle-all"
-          type="checkbox"
-          v-model="allDone"
-      />
-      <label for="toggle-all"></label>
-      <ul class="todo-list">
-        <li
-            v-for="todo in filteredTodos"
-            class="todo"
-            :key="todo.id"
-            :class="{ completed: todo.completed, editing: todo == editedTodo }"
+  <section class="todopage">
+    <div class="todobody">
+      <h1>Education plan</h1>
+      <div class="header">
+        <input
+            class="new-todo"
+            autofocus
+            autocomplete="off"
+            placeholder="What needs to be done?"
+            v-model="newTodo"
+            @keyup.enter="addTodo"
+        />
+      </div>
+      <div class="main" v-show="todos.length" v-cloak>
+        <input
+            id="toggle-all"
+            class="toggle-all"
+            type="checkbox"
+            v-model="allDone"
+        />
+        <label for="toggle-all"></label>
+        <ul class="todo-list">
+          <li
+              v-for="todo in filteredTodos"
+              class="todo"
+              :key="todo.id"
+              :class="{ completed: todo.completed, editing: todo == editedTodo }"
+          >
+            <div class="view">
+              <input class="toggle" type="checkbox" v-model="todo.completed" />
+              <label @dblclick="editTodo(todo)">{{ todo.title }}</label>
+              <button class="destroy" @click="removeTodo(todo)"></button>
+            </div>
+            <input
+                class="edit"
+                type="text"
+                v-model="todo.title"
+                v-todo-focus="todo == editedTodo"
+                @blur="doneEdit(todo)"
+                @keyup.enter="doneEdit(todo)"
+                @keyup.esc="cancelEdit(todo)"
+            />
+          </li>
+        </ul>
+      </div>
+      <div class="footer" v-show="todos.length" v-cloak>
+        <div class="filters">
+          <button @click="FilterKey = 'all'" :class="{ selected: FilterKey == 'all' }">All</button>
+          <button @click="FilterKey = 'active'" :class="{ selected: FilterKey == 'active' }">Active</button>
+          <button @click="FilterKey = 'completed'" :class="{ selected: FilterKey == 'completed' }">Completed</button>
+        </div>
+        <button
+            class="clear-completed"
+            @click="removeCompleted"
+            v-show="todos.length > remaining"
         >
-          <div class="view">
-            <input class="toggle" type="checkbox" v-model="todo.completed" />
-            <label @dblclick="editTodo(todo)">{{ todo.title }}</label>
-            <button class="destroy" @click="removeTodo(todo)"></button>
-          </div>
-          <input
-              class="edit"
-              type="text"
-              v-model="todo.title"
-              v-todo-focus="todo == editedTodo"
-              @blur="doneEdit(todo)"
-              @keyup.enter="doneEdit(todo)"
-              @keyup.esc="cancelEdit(todo)"
-          />
-        </li>
-      </ul>
+          Clear completed
+        </button>
+      </div>
     </div>
-    <footer class="footer" v-show="todos.length" v-cloak>
-        <span class="todo-count">
-          <strong>{{ remaining }}</strong> {{ remaining | pluralize }} left
-        </span>
-      <ul class="filters">
-        <li>
-          <a href="#/all" :class="{ selected: visibility == 'all' }">All</a>
-        </li>
-        <li>
-          <a href="#/active" :class="{ selected: visibility == 'active' }"
-          >Active</a
-          >
-        </li>
-        <li>
-          <a
-              href="#/completed"
-              :class="{ selected: visibility == 'completed' }"
-          >Completed</a
-          >
-        </li>
-      </ul>
-      <button
-          class="clear-completed"
-          @click="removeCompleted"
-          v-show="todos.length > remaining"
-      >
-        Clear completed
-      </button>
-    </footer>
   </section>
 </template>
 
@@ -92,17 +79,18 @@
     }
   };
 
-  // visibility filters
   let filters = {
     all: function(todos) {
       return todos;
     },
     active: function(todos) {
+      console.log('active!');
       return todos.filter(function(todo) {
         return !todo.completed;
       });
     },
     completed: function(todos) {
+      console.log('completed!');
       return todos.filter(function(todo) {
         return todo.completed;
       });
@@ -116,7 +104,7 @@
         todos: todoStorage.fetch(),
         newTodo: "",
         editedTodo: null,
-        visibility: "all"
+        FilterKey: "all"
       }
     },
 
@@ -131,7 +119,7 @@
 
     computed: {
       filteredTodos: function() {
-        return filters[this.visibility](this.todos);
+        return filters[this.FilterKey](this.todos);
       },
       remaining: function() {
         return filters.active(this.todos).length;
@@ -145,12 +133,6 @@
             todo.completed = value;
           });
         }
-      }
-    },
-
-    filters: {
-      pluralize: function(n) {
-        return n === 1 ? "item" : "items";
       }
     },
 
@@ -195,7 +177,7 @@
 
       removeCompleted: function() {
         this.todos = filters.active(this.todos);
-      }
+      },
     },
 
     directives: {
@@ -204,17 +186,24 @@
           el.focus();
         }
       }
-    }
+    },
   }
 
 </script>
 
 <style scoped>
-  .todoapp {
+  .todopage {
+    background: url("../../assets/plane-bg.jpg") no-repeat center;
+    background-size: cover;
+    height: 100%;
+    padding-top: 140px;
+  }
+
+  .todobody {
     background: #fff;
     min-width: 230px;
     max-width: 550px;
-    margin: 140px auto 0;
+    margin: 0 auto;
     position: relative;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2),
     0 25px 50px 0 rgba(0, 0, 0, 0.1);
@@ -338,24 +327,20 @@
   }
 
   .todo-list li .toggle + label {
-    /*
-      Firefox requires `#` to be escaped - https://bugzilla.mozilla.org/show_bug.cgi?id=922433
-      IE and Edge requires *everything* to be escaped to render, so we do that instead of just the `#` - https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/7157459/
-    */
-    background-image: url('data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%22-10%20-18%20100%20135%22%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2250%22%20r%3D%2250%22%20fill%3D%22none%22%20stroke%3D%22%23ededed%22%20stroke-width%3D%223%22/%3E%3C/svg%3E');
-    background-repeat: no-repeat;
-    background-position: center left;
+
+    background: url('../../assets/001-blank-check-box.svg') no-repeat center left;
+    background-size: contain;
   }
 
   .todo-list li .toggle:checked + label {
-    background-image: url('data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%22-10%20-18%20100%20135%22%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2250%22%20r%3D%2250%22%20fill%3D%22none%22%20stroke%3D%22%23bddad5%22%20stroke-width%3D%223%22/%3E%3Cpath%20fill%3D%22%235dc2af%22%20d%3D%22M72%2025L42%2071%2027%2056l-4%204%2020%2020%2034-52z%22/%3E%3C/svg%3E');
+    background: url('../../assets/002-check-box.svg') no-repeat center left;
+    background-size: contain;
   }
 
   .todo-list li label {
-    word-break: break-all;
-    padding: 15px 15px 15px 60px;
     display: block;
-    line-height: 1.2;
+    margin: 10px 10px;
+    padding: 5px 5px 5px 50px;
     transition: color 0.4s;
   }
 
@@ -419,7 +404,7 @@
     list-style: none;
   }
 
-  .filters li a {
+  .filters button {
     color: inherit;
     margin: 3px;
     padding: 3px 7px;
@@ -428,11 +413,11 @@
     border-radius: 3px;
   }
 
-  .filters li a:hover {
+  .filters button {
     border-color: rgba(175, 47, 47, 0.1);
   }
 
-  .filters li a.selected {
+  .filters button {
     border-color: rgba(175, 47, 47, 0.2);
   }
 
@@ -445,28 +430,6 @@
   }
 
   .clear-completed:hover {
-    text-decoration: underline;
-  }
-
-  .info {
-    margin: 65px auto 0;
-    color: #bfbfbf;
-    font-size: 10px;
-    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
-    text-align: center;
-  }
-
-  .info p {
-    line-height: 1;
-  }
-
-  .info a {
-    color: inherit;
-    text-decoration: none;
-    font-weight: 400;
-  }
-
-  .info a:hover {
     text-decoration: underline;
   }
 
