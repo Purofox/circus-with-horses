@@ -1,14 +1,13 @@
 <template>
-  <main-layout>
-    <p>Welcome home</p>
-  </main-layout>
+  <MainList/>
 </template>
 
 <script>
-import MainLayout from '../layouts/Main.vue'
-export default {
-  components: {
-    MainLayout
+  import MainList from '../components/MainList/MainList.vue'
+  export default {
+    name: 'Home',
+    components: {
+      MainList
+    }
   }
-}
 </script>
