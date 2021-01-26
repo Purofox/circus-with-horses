@@ -2,15 +2,15 @@
   <section class="main-page">
     <div class="container">
       <nav class="user-link">
-        <ul>
-          <li>
-            <a href="#">Education plan</a>
+        <ul class="round-list">
+          <li class="round-list__element">
+            <router-link to="/education">Education plan</router-link>
           </li>
-          <li>
-            <a href="#">Pomodoro Tracker</a>
+          <li class="round-list__element">
+            <router-link to="/pomodoro">Pomodoro Tracker</router-link>
           </li>
-          <li>
-            <a href="#">Pomodoro Tracker</a>
+          <li class="round-list__element">
+            <router-link to="/stress">Stress level</router-link>
           </li>
         </ul>
       </nav>
@@ -27,11 +27,25 @@
 
 <script>
 export default {
-  name: "MainList"
+  name: "MainList",
 }
+
 </script>
 
 <style scoped>
+  @keyframes rot {
+    from {
+      transform: rotate(0deg)
+      translate(-150px)
+      rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg)
+      translate(-350px)
+      rotate(-360deg);
+    }
+  }
+
   .main-page {
     background: url("../../assets/main-bg.jpg") no-repeat center;
     background-size: cover;
@@ -52,9 +66,55 @@ export default {
     max-width: 100%;
   }
 
-  .user-link ul {
+  .round-list {
+    align-items: center;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    height: 450px;
     list-style: none;
-    margin: 0;
+    left: 0;
+    margin: auto;
     padding: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 450px;
+  }
+
+  .round-list__element {
+    /*animation: rot 10s infinite linear;*/
+    height: 150px;
+    left: 70px;
+    /*position: absolute;*/
+    top: 40px;
+    width: 150px;
+  }
+
+  .round-list__element a {
+    align-items: center;
+    border: 3px solid #fff;
+    border-radius: 50%;
+    box-sizing: border-box;
+    color: #fff;
+    display: flex;
+    font-size: 18px;
+    height: 100%;
+    justify-content: center;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    transition: .4s;
+    width: 100%;
+    word-break: break-word;
+  }
+
+  .round-list__element:hover {
+    animation: none;
+  }
+
+  .round-list__element a:hover {
+    transition: .4s;
+    background: #0009;
   }
 </style>

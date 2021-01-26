@@ -1,8 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import home from './pages/Home.vue'
-import about from './pages/About.vue'
+import stressLevel from './pages/StressLevel.vue'
 import EducationPlan from './pages/EducationPlan.vue'
+import Pomodoro from './pages/Pomodoro.vue'
 
 Vue.use(Router)
 
@@ -15,14 +16,19 @@ const router = new Router({
             component: home
         },
         {
-            path: '/about',
-            name: 'about',
-            component: about
+            path: '/stress',
+            name: 'stressLevel',
+            component: stressLevel
         },
         {
             path: '/education',
             name: 'education-plan',
             component: EducationPlan
+        },
+        {
+            path: '/pomodoro',
+            name: 'pomodoro',
+            component: Pomodoro
         }
     ]
 });

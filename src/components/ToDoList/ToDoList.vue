@@ -329,12 +329,12 @@
   .todo-list li .toggle + label {
 
     background: url('../../assets/001-blank-check-box.svg') no-repeat center left;
-    background-size: contain;
+    background-size: 20px;
   }
 
   .todo-list li .toggle:checked + label {
     background: url('../../assets/002-check-box.svg') no-repeat center left;
-    background-size: contain;
+    background-size: 20px;
   }
 
   .todo-list li label {

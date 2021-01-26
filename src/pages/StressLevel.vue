@@ -1,9 +1,9 @@
 <template>
-  <p>About</p>
+  <p>StressLevel</p>
 </template>
 
 <script>
   export default {
-    name: "about"
+    name: "StressLevel"
   }
 </script>
