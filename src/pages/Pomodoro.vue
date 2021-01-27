@@ -1,13 +1,15 @@
 <template>
-  <div class="container">
-    Pomodoro
-  </div>
+  <Pomodoro/>
 </template>
 
 <script>
-export default {
-name: "Pomodoro"
-}
+  import Pomodoro from '../components/Pomodoro/Pomodoro.vue'
+  export default {
+    name: "PomodoroPage",
+    components: {
+      Pomodoro
+    }
+  }
 </script>
 
 <style scoped>

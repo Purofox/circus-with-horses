@@ -3,7 +3,7 @@ import Router from 'vue-router'
 import home from './pages/Home.vue'
 import stressLevel from './pages/StressLevel.vue'
 import EducationPlan from './pages/EducationPlan.vue'
-import Pomodoro from './pages/Pomodoro.vue'
+import PomodoroPage from './pages/Pomodoro.vue'
 
 Vue.use(Router)
 
@@ -28,7 +28,7 @@ const router = new Router({
         {
             path: '/pomodoro',
             name: 'pomodoro',
-            component: Pomodoro
+            component: PomodoroPage
         }
     ]
 });
