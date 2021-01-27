@@ -258,31 +258,23 @@
   }
 
   .toggle-all + label {
-    width: 60px;
-    height: 34px;
+    background: url('../../assets/002-check-box.svg') no-repeat center left;
+    background-size: 20px;
+    cursor: pointer;
     font-size: 0;
+    height: 34px;
+    left: 10px;
     position: absolute;
-    top: -52px;
-    left: -13px;
-    -webkit-transform: rotate(90deg);
-    transform: rotate(90deg);
-  }
-
-  .toggle-all + label:before {
-    content: '+';
-    font-size: 22px;
-    color: #e6e6e6;
-    padding: 10px 27px 10px 27px;
-  }
-
-  .toggle-all:checked + label:before {
-    color: #737373;
+    top: -47px;
+    width: 60px;
   }
 
   .todo-list {
-    margin: 0;
-    padding: 0;
     list-style: none;
+    margin: 0;
+    max-height: 50vh;
+    overflow-y: auto;
+    padding: 0;
   }
 
   .todo-list li {
@@ -405,20 +397,12 @@
   }
 
   .filters button {
-    color: inherit;
+    border: 1px solid#4d4d4d;
+    color:  #4d4d4d;
     margin: 3px;
     padding: 3px 7px;
     text-decoration: none;
-    border: 1px solid transparent;
     border-radius: 3px;
-  }
-
-  .filters button {
-    border-color: rgba(175, 47, 47, 0.1);
-  }
-
-  .filters button {
-    border-color: rgba(175, 47, 47, 0.2);
   }
 
   .clear-completed,
