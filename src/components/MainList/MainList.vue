@@ -57,7 +57,7 @@ export default {
     color: #fff;
     font-size: 24px;
     max-width: 200px;
-    margin: 0 auto;
+    margin: 5vw auto 0;
     text-align: center;
   }
 
@@ -69,8 +69,6 @@ export default {
   .round-list {
     align-items: center;
     bottom: 0;
-    display: flex;
-    justify-content: center;
     height: 450px;
     list-style: none;
     left: 0;
@@ -86,14 +84,14 @@ export default {
     /*animation: rot 10s infinite linear;*/
     height: 150px;
     left: 70px;
-    /*position: absolute;*/
+    position: absolute;
     top: 40px;
     width: 150px;
   }
 
   .round-list__element a {
     align-items: center;
-    border: 3px solid #fff;
+    background: #0009;
     border-radius: 50%;
     box-sizing: border-box;
     color: #fff;
@@ -115,6 +113,21 @@ export default {
 
   .round-list__element a:hover {
     transition: .4s;
-    background: #0009;
+    background: #000;
+  }
+
+  .round-list__element:first-child {
+    left: -5vw;
+    top: -20vh;
+  }
+
+  .round-list__element:nth-child(2) {
+    left: 0;
+    top: 30vh;
+  }
+
+  .round-list__element:last-child {
+    left: 25vw;
+    top: 15vh;
   }
 </style>
