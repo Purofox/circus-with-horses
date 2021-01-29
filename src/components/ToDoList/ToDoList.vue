@@ -203,7 +203,7 @@
   .todobody {
     background: #fff;
     min-width: 230px;
-    max-width: 550px;
+    max-width: 600px;
     margin: 0 auto;
     position: relative;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2),

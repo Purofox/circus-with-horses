@@ -24,54 +24,58 @@ export default {
     data() {
       return {
         timer: null,
-        totalTime: (25 * 60),
-        resetButton: false,
         sessionName: "Work",
+        interval: '',
         edit: false
       }
     },
 
-    mounted() {
-      let timer_now = localStorage.getItem('timer_now');
+    created() {
+      let timer_now = localStorage.getItem('timer_now')
       if(timer_now > 0) {
         this.timer = timer_now
       } else {
-        this.timer = 25
+        this.timer = 25*60
       }
-      console.log(timer_now);
+
+      window.addEventListener('beforeunload', this.save_timer)
     },
 
     methods: {
-      save_timer() {
-        localStorage.setItem('timer_now' , this.timer)
+      check_timer_completed() {
+        if(this.timer <= 0) {
+          clearInterval(this.interval)
+          this.timer = 0
+          this.save_timer()
+        }
       },
       startTimer: function() {
-        this.timer = setInterval(() => this.countdown(), 1000);
-        this.resetButton = true;
+        this.interval = setInterval(() => {
+          this.timer--;
+          this.check_timer_completed()
+        },1000);
       },
       stopTimer: function() {
         clearInterval(this.timer);
         this.timer = null;
-        this.resetButton = true;
         this.save_timer();
       },
       padTime: function(time){
         return (time < 10 ? '0' : '') + time;
       },
-      countdown: function() {
-        if(this.totalTime > 0) {
-          this.totalTime--;
-        }
-      }
-    },
-    computed: {
-      minutes: function(){
-        const minutes = Math.floor(this.totalTime / 60);
-        return this.padTime(minutes);
+      save_timer() {
+        localStorage.setItem('timer_now' , this.timer)
       },
-      seconds: function() {
-        const seconds = this.totalTime - (this.minutes * 60);
+    },
+
+    computed: {
+      seconds() {
+        const seconds = Math.trunc(this.timer) % 60;
         return this.padTime(seconds);
+      },
+      minutes() {
+        const minutes = Math.trunc((this.timer) / 60) % 60;
+        return this.padTime(minutes);
       },
     }
   }
