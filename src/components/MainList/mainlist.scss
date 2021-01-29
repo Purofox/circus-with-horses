@@ -1,38 +1,3 @@
-<template>
-  <section class="main-page">
-    <div class="container">
-      <nav class="user-link">
-        <ul class="round-list">
-          <li class="round-list__element">
-            <router-link to="/education">Education plan</router-link>
-          </li>
-          <li class="round-list__element">
-            <router-link to="/pomodoro">Pomodoro Tracker</router-link>
-          </li>
-          <li class="round-list__element">
-            <router-link to="/stress">Stress level</router-link>
-          </li>
-        </ul>
-      </nav>
-
-      <div class="user-profile">
-        <div class="user-profile__img">
-          <img src="../../assets/avatar.png" alt="">
-        </div>
-        <div class="user-profile__name">Lisa</div>
-      </div>
-    </div>
-  </section>
-</template>
-
-<script>
-export default {
-  name: "MainList",
-};
-
-</script>
-
-<style scoped>
 @keyframes rot {
   from {
     transform: rotate(0deg)
@@ -130,4 +95,3 @@ export default {
   left: 25vw;
   top: 15vh;
 }
-</style>
