@@ -27,32 +27,31 @@ export default {
         sessionName: "Work",
         interval: '',
         edit: false
-      }
+      };
     },
 
     created() {
-      let timer_now = localStorage.getItem('timer_now')
+      let timer_now = localStorage.getItem('timer_now');
       if(timer_now > 0) {
-        this.timer = timer_now
+        this.timer = timer_now;
       } else {
-        this.timer = 25*60
+        this.timer = 25*60;
       }
-
-      window.addEventListener('beforeunload', this.save_timer)
+      window.addEventListener('beforeunload', this.save_timer);
     },
 
     methods: {
       check_timer_completed() {
         if(this.timer <= 0) {
-          clearInterval(this.interval)
-          this.timer = 0
-          this.save_timer()
+          clearInterval(this.interval);
+          this.timer = 0;
+          this.save_timer();
         }
       },
       startTimer: function() {
         this.interval = setInterval(() => {
           this.timer--;
-          this.check_timer_completed()
+          this.check_timer_completed();
         },1000);
       },
       stopTimer: function() {
@@ -64,7 +63,7 @@ export default {
         return (time < 10 ? '0' : '') + time;
       },
       save_timer() {
-        localStorage.setItem('timer_now' , this.timer)
+        localStorage.setItem('timer_now' , this.timer);
       },
     },
 
@@ -78,7 +77,7 @@ export default {
         return this.padTime(minutes);
       },
     }
-  }
+  };
 </script>
 
 <style scoped>

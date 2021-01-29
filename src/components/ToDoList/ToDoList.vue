@@ -106,7 +106,7 @@
         newTodo: "",
         editedTodo: null,
         FilterKey: "all"
-      }
+      };
     },
 
     watch: {
@@ -188,7 +188,7 @@
         }
       }
     },
-  }
+  };
 
 </script>
 

@@ -1,11 +1,11 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import home from './pages/Home.vue'
-import stressLevel from './pages/StressLevel.vue'
-import EducationPlan from './pages/EducationPlan.vue'
-import PomodoroPage from './pages/Pomodoro.vue'
+import Vue from 'vue';
+import Router from 'vue-router';
+import home from './pages/Home.vue';
+import stressLevel from './pages/StressLevel.vue';
+import EducationPlan from './pages/EducationPlan.vue';
+import PomodoroPage from './pages/Pomodoro.vue';
 
-Vue.use(Router)
+Vue.use(Router);
 
 const router = new Router({
     mode: 'history',
@@ -33,4 +33,4 @@ const router = new Router({
     ]
 });
 
-export default router
+export default router;
