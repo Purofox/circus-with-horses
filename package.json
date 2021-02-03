@@ -9,8 +9,10 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
+    "lodash": "^4.17.20",
     "moment": "^2.29.1",
     "vue": "^2.6.11",
+    "vue-lodash": "^2.1.2",
     "vue-router": "^3.5.0"
   },
   "devDependencies": {
