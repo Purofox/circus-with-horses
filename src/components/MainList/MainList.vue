@@ -21,13 +21,19 @@
         </div>
         <div class="user-profile__name">Lisa</div>
       </div>
+
+      <Deadline/>
     </div>
   </section>
 </template>
 
 <script>
+import Deadline from '../Deadline/Deadline.vue';
 export default {
   name: "MainList",
+  components: {
+    Deadline
+  }
 };
 
 </script>

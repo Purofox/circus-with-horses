@@ -1,7 +1,8 @@
 <template>
-  <div class="moment-test">
-    <div class="deadline-timer">
-      Конец испытательного срока {{ months }}:{{ days }}:{{ hours }}:{{ minutes }}:{{ seconds }}
+  <div class="deadline-timer">
+    До конца испытательного срока
+    <div class="deadline-counter">
+      {{ months }}:{{ days }}:{{ hours }}:{{ minutes }}:{{ seconds }}
     </div>
   </div>
 </template>
@@ -23,11 +24,11 @@ import moment from 'moment';
       };
     },
     methods: {
-      addOneSecondToActualTimeEverySecond () {
+      secondsCounter () {
         let component = this;
         component.actualTime = moment().format('X');
         setTimeout(function(){
-          component.addOneSecondToActualTimeEverySecond();
+          component.secondsCounter();
         }, 1000);
       },
       getDiffInSeconds () {
@@ -43,9 +44,9 @@ import moment from 'moment';
         this.seconds = duration.seconds() > 0 ? duration.seconds() : 0;
       }
     },
-    created () {
+    mounted () {
       this.compute();
-      this.addOneSecondToActualTimeEverySecond();
+      this.secondsCounter();
     },
     watch: {
       actualTime () {
@@ -54,3 +55,28 @@ import moment from 'moment';
     }
   };
 </script>
+
+<style>
+  .deadline-timer {
+    align-items: center;
+    background: #000;
+    border-radius: 50%;
+    bottom: 0;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 200px;
+    left: 10px;
+    margin: 20px auto;
+    padding: 10px;
+    position: absolute;
+    text-align: center;
+    width: 200px;
+  }
+
+  .deadline-counter {
+    font-size: 24px;
+    margin-top: 10px;
+  }
+</style>

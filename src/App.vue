@@ -47,7 +47,7 @@ export default {
 
   body {
     color: #4d4d4d;
-    font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font: 16px 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-weight: 300;
   }
 
