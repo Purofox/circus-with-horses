@@ -13,6 +13,7 @@
       <div class="control" @click="startTimer">Start</div>
       <div class="control" @click="stopTimer">Stop</div>
     </div>
+    <div class="dialog">Time to rest</div>
 
     <router-link class="back-to-main" to="/">Back</router-link>
   </div>
@@ -23,7 +24,7 @@ export default {
     name: "Pomodoro",
     data() {
       return {
-        timer: null,
+        timer: 25*60,
         sessionName: "Work",
         interval: '',
         edit: false
@@ -32,10 +33,9 @@ export default {
 
     created() {
       let timer_now = localStorage.getItem('timer_now');
-      if(timer_now > 0) {
+      if(timer_now < this.timer) {
         this.timer = timer_now;
-      } else {
-        this.timer = 25*60;
+        this.startTimer();
       }
       window.addEventListener('beforeunload', this.save_timer);
     },
@@ -48,18 +48,18 @@ export default {
           this.save_timer();
         }
       },
-      startTimer: function() {
+      startTimer () {
         this.interval = setInterval(() => {
           this.timer--;
           this.check_timer_completed();
         },1000);
       },
-      stopTimer: function() {
+      stopTimer () {
         clearInterval(this.timer);
-        this.timer = null;
+        this.timer = 25*60;
         this.save_timer();
       },
-      padTime: function(time){
+      padTime (time){
         return (time < 10 ? '0' : '') + time;
       },
       save_timer() {
