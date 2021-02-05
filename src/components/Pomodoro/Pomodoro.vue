@@ -83,13 +83,15 @@ export default {
 <style scoped>
   @keyframes pulse {
     0% {
-      box-shadow: 0 0 0 0 rgba(204,169,44, 0.4);
+      box-shadow: 0 0 0 0 rgba(204, 169, 44, .4);
     }
+
     70% {
-      box-shadow: 0 0 0 10px rgba(204,169,44, 0);
+      box-shadow: 0 0 0 10px rgba(204, 169, 44, 0);
     }
+
     100% {
-      box-shadow: 0 0 0 0 rgba(204,169,44, 0);
+      box-shadow: 0 0 0 0 rgba(204, 169, 44, 0);
     }
   }
 

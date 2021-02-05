@@ -206,8 +206,7 @@
     max-width: 600px;
     margin: 0 auto;
     position: relative;
-    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2),
-    0 25px 50px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .2), 0 25px 50px 0 rgba(0, 0, 0, .1);
   }
 
   .todoapp input::placeholder {
@@ -238,7 +237,7 @@
 
   .new-todo {
     background: rgba(0, 0, 0, .003);
-    box-shadow: inset 0 -2px 1px rgba(0,0,0, .03);
+    box-shadow: inset 0 -2px 1px rgba(0, 0, 0, .03);
     border: none;
     padding: 16px 16px 16px 60px;
   }
@@ -293,6 +292,10 @@
     padding: 0;
   }
 
+  .todo-list li .edit {
+    display: none;
+  }
+
   .todo-list li.editing .edit {
     display: block;
     width: calc(100% - 43px);
@@ -309,37 +312,33 @@
     bottom: 0;
     height: auto;
     margin: auto 0;
+    opacity: 0;
     position: absolute;
     text-align: center;
     top: 0;
     width: 40px;
   }
 
-  .todo-list li .toggle {
-    opacity: 0;
-  }
-
-  .todo-list li .toggle + label {
-
-    background: url('../../assets/001-blank-check-box.svg') no-repeat center left;
-    background-size: 20px;
-  }
-
-  .todo-list li .toggle:checked + label {
-    background: url('../../assets/002-check-box.svg') no-repeat center left;
-    background-size: 20px;
-  }
-
   .todo-list li label {
     display: block;
     margin: 10px 10px;
     padding: 5px 5px 5px 50px;
-    transition: color 0.4s;
+    transition: color .4s;
+  }
+
+  .todo-list li .toggle + label {
+    background: url('../../assets/001-blank-check-box.svg') no-repeat center left;
+    background-size: 20px;
   }
 
   .todo-list li.completed label {
     color: #d9d9d9;
     text-decoration: line-through;
+  }
+
+  .todo-list li .toggle:checked + label {
+    background: url('../../assets/002-check-box.svg') no-repeat center left;
+    background-size: 20px;
   }
 
   .todo-list li .destroy {
@@ -353,23 +352,19 @@
     margin: auto 0;
     font-size: 30px;
     color: #cc9a9a;
-    transition: color 0.2s ease-out;
+    transition: color .2s ease-out;
   }
 
   .todo-list li .destroy:hover {
     color: #af5b5e;
   }
 
-  .todo-list li .destroy:after {
+  .todo-list li .destroy::after {
     content: '×';
   }
 
   .todo-list li:hover .destroy {
     display: block;
-  }
-
-  .todo-list li .edit {
-    display: none;
   }
 
   .todo-list li.editing:last-child {
@@ -385,7 +380,6 @@
     border-top: 1px solid #e6e6e6;
   }
 
-
   .todo-count strong {
     font-weight: 300;
   }
@@ -399,7 +393,7 @@
 
   .filters button {
     border: 1px solid#4d4d4d;
-    color:  #4d4d4d;
+    color: #4d4d4d;
     margin: 3px;
     padding: 3px 7px;
     text-decoration: none;

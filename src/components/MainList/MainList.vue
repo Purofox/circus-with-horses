@@ -41,14 +41,11 @@ export default {
 <style scoped>
 @keyframes rot {
   from {
-    transform: rotate(0deg)
-    translate(-150px)
-    rotate(0deg);
+    transform: rotate(0deg) translate(-150px) rotate(0deg);
   }
+
   to {
-    transform: rotate(360deg)
-    translate(-350px)
-    rotate(-360deg);
+    transform: rotate(360deg) translate(-350px) rotate(-360deg);
   }
 }
 
