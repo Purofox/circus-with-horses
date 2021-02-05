@@ -1,6 +1,5 @@
 <template>
   <div class="timer-container">
-    <div class="settings">Set Interval</div>
     <div class="timer">
       {{sessionName}}
       <div class="timer-value test">
@@ -10,24 +9,30 @@
       </div>
     </div>
     <div class="timer-control">
-      <div class="control" @click="startTimer">Start</div>
-      <div class="control" @click="stopTimer">Stop</div>
+      <button class="control" :disabled="isDisabled" @click="startTimer">Start</button>
+      <button class="control" @click="resetTimer">Reset</button>
     </div>
-    <div class="dialog">Time to rest</div>
+    <div v-if="showModal" class="dialog">
+      Time to rest
+      <div class="close" @click="showModal = false">x</div>
+    </div>
 
     <router-link class="back-to-main" to="/">Back</router-link>
   </div>
 </template>
 
 <script>
+const audio = new Audio('../assets/audio/alarm-clock-bell.mp3');
 export default {
     name: "Pomodoro",
     data() {
       return {
-        timer: 25*60,
+        timer: 10,
         sessionName: "Work",
         interval: '',
-        edit: false
+        edit: false,
+        showModal: false,
+        isDisabled: false
       };
     },
 
@@ -42,21 +47,30 @@ export default {
 
     methods: {
       check_timer_completed() {
-        if(this.timer <= 0) {
-          clearInterval(this.interval);
-          this.timer = 0;
+        if(this.timer === 0 && this.sessionName === 'Work') {
+          audio.play();
+          this.timer = 5*60;
+          this.sessionName = 'Rest';
+          this.save_timer();
+        } if (this.timer === 0 && this.sessionName === 'Rest') {
+          audio.play();
+          this.timer = 25*60;
+          this.sessionName = 'Work';
           this.save_timer();
         }
       },
       startTimer () {
+        this.isDisabled = true;
         this.interval = setInterval(() => {
           this.timer--;
           this.check_timer_completed();
         },1000);
       },
-      stopTimer () {
+      resetTimer () {
+        this.isDisabled = false;
         clearInterval(this.timer);
         this.timer = 25*60;
+        this.sessionName = 'Work';
         this.save_timer();
       },
       padTime (time){
@@ -75,8 +89,8 @@ export default {
       minutes() {
         const minutes = Math.trunc((this.timer) / 60) % 60;
         return this.padTime(minutes);
-      },
-    }
+      }
+    },
   };
 </script>
 
@@ -123,11 +137,15 @@ export default {
     font-size: 24px;
     justify-content: space-around;
     margin: 40px auto 0;
-    max-width: 200px;
+    max-width: 250px;
   }
 
   .control {
+    background: #fff;
+    border-radius: 50%;
     cursor: pointer;
+    height: 100px;
+    width: 100px;
   }
 
   .back-to-main {
@@ -167,5 +185,27 @@ export default {
       -webkit-transform: scale3d(1, 1, 1);
       transform: scale3d(1, 1, 1);
     }
+  }
+
+  .dialog {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    width: 25vw;
+    height: 150px;
+    background: #20b88e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+  }
+
+  .close {
+    position: absolute;
+    right: 5px;
+    top: 5px;
   }
 </style>
