@@ -22,12 +22,16 @@
 </template>
 
 <script>
-const audio = new Audio('../assets/audio/alarm-clock-bell.mp3');
+const audio = new Audio();
+audio.src = '../../assets/audio/alarm-clock-bell.mp3';
+audio.preload = 'auto';
+audio.play();
+
 export default {
     name: "Pomodoro",
     data() {
       return {
-        timer: 10,
+        timer: 25*60,
         sessionName: "Work",
         interval: '',
         edit: false,

@@ -84,7 +84,7 @@ export default {
 }
 
 .round-list__element {
-  /*animation: rot 10s infinite linear;*/
+  /* animation: rot 10s infinite linear; */
   height: 150px;
   left: 70px;
   position: absolute;
@@ -121,12 +121,12 @@ export default {
 
 .round-list__element:first-child {
   left: -5vw;
-  top: -20vh;
+  top: -10vh;
 }
 
 .round-list__element:nth-child(2) {
   left: 0;
-  top: 30vh;
+  top: 40vh;
 }
 
 .round-list__element:last-child {

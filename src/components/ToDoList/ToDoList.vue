@@ -85,13 +85,11 @@
       return todos;
     },
     active: function(todos) {
-      console.log('active!');
       return todos.filter(function(todo) {
         return !todo.completed;
       });
     },
     completed: function(todos) {
-      console.log('completed!');
       return todos.filter(function(todo) {
         return todo.completed;
       });
@@ -400,8 +398,7 @@
     border-radius: 3px;
   }
 
-  .clear-completed,
-  html .clear-completed:active {
+  .clear-completed {
     position: relative;
     line-height: 20px;
     text-decoration: none;
