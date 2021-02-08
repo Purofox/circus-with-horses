@@ -22,7 +22,6 @@
 </template>
 
 <script>
-const audio = new Audio('../assets/audio/alarm-clock-bell.mp3');
 export default {
     name: "Pomodoro",
     data() {
@@ -48,12 +47,10 @@ export default {
     methods: {
       check_timer_completed() {
         if(this.timer === 0 && this.sessionName === 'Work') {
-          audio.play();
           this.timer = 5*60;
           this.sessionName = 'Rest';
           this.save_timer();
         } if (this.timer === 0 && this.sessionName === 'Rest') {
-          audio.play();
           this.timer = 25*60;
           this.sessionName = 'Work';
           this.save_timer();
@@ -77,6 +74,10 @@ export default {
       save_timer() {
         localStorage.setItem('timer_now' , this.timer);
       },
+      playMethod() {
+        const audio = new Audio('../../assets/audio/alarm-clock-bell.mp3');
+        audio.play();
+      }
     },
 
     computed: {
