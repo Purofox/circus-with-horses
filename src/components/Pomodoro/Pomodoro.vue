@@ -27,7 +27,7 @@ export default {
     name: "Pomodoro",
     data() {
       return {
-        timer: 10,
+        timer: 25*60,
         sessionName: "Work",
         interval: '',
         edit: false,
@@ -67,11 +67,9 @@ export default {
         },1000);
       },
       resetTimer () {
-        this.isDisabled = false;
         clearInterval(this.timer);
         this.timer = 25*60;
         this.sessionName = 'Work';
-        this.save_timer();
       },
       padTime (time){
         return (time < 10 ? '0' : '') + time;
