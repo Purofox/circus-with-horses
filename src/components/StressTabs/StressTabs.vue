@@ -3,12 +3,17 @@
     <keep-alive>
       <div class="tab">1</div>
     </keep-alive>
+    <BackToMain/>
   </div>
 </template>
 
 <script>
+import BackToMain from '../BackToMain/BackToMain.vue';
 export default {
-  name: "StressTabs"
+  name: "StressTabs",
+  components: {
+    BackToMain
+  }
 };
 </script>
 
