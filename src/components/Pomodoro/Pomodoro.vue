@@ -70,6 +70,7 @@ export default {
         clearInterval(this.interval);
         this.timer = 25*60;
         this.sessionName = 'Work';
+        this.isDisabled = false;
       },
       padTime (time){
         return (time < 10 ? '0' : '') + time;
@@ -97,20 +98,6 @@ export default {
 </script>
 
 <style scoped>
-  @keyframes pulse {
-    0% {
-      box-shadow: 0 0 0 0 rgba(204, 169, 44, .4);
-    }
-
-    70% {
-      box-shadow: 0 0 0 10px rgba(204, 169, 44, 0);
-    }
-
-    100% {
-      box-shadow: 0 0 0 0 rgba(204, 169, 44, 0);
-    }
-  }
-
   .timer-container {
     background: url("../../assets/time-bg.jpg") no-repeat center;
     background-size: cover;
