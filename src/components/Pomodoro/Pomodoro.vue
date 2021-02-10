@@ -67,7 +67,7 @@ export default {
         },1000);
       },
       resetTimer () {
-        clearInterval(this.timer);
+        clearInterval(this.interval);
         this.timer = 25*60;
         this.sessionName = 'Work';
       },
