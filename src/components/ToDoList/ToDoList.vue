@@ -65,7 +65,6 @@
 
 <script>
   import BackToMain from '../BackToMain/BackToMain.vue';
-  // localStorage persistence
   let STORAGE_KEY = "stay-focused-todo";
   let todoStorage = {
     fetch: function() {
@@ -86,13 +85,11 @@
       return todos;
     },
     active: function(todos) {
-      console.log('active!');
       return todos.filter(function(todo) {
         return !todo.completed;
       });
     },
     completed: function(todos) {
-      console.log('completed!');
       return todos.filter(function(todo) {
         return todo.completed;
       });

@@ -1,10 +1,12 @@
 import Vue from 'vue';
+import Vuex from 'vuex';
 import router from './routes';
 import App from './App.vue';
 import VueLodash from 'vue-lodash';
 import lodash from 'lodash';
 import VueI18n from 'vue-i18n';
 
+Vue.use(Vuex);
 Vue.use(VueI18n);
 Vue.use(VueLodash, { name: 'custom' , lodash: lodash });
 
