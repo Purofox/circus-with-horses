@@ -1,13 +1,13 @@
 <template>
-  <Deadline/>
+  <StressTabs/>
 </template>
 
 <script>
-import Deadline from '../components/Deadline/Deadline.vue';
+import StressTabs from '../components/StressTabs/StressTabs.vue';
   export default {
     name: "StressLevel",
     components: {
-      Deadline
+      StressTabs
     }
   };
 </script>

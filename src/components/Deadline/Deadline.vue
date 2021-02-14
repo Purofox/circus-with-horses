@@ -1,6 +1,6 @@
 <template>
   <div class="deadline-timer">
-    До конца испытательного срока
+    {{ $t("message.probation") }}
     <div class="deadline-counter">
       {{ months }}:{{ days }}:{{ hours }}:{{ minutes }}:{{ seconds }}
     </div>

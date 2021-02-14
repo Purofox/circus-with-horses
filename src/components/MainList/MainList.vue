@@ -4,13 +4,13 @@
       <nav class="user-link">
         <ul class="round-list">
           <li class="round-list__element">
-            <router-link to="/education">Education plan</router-link>
+            <router-link to="/education">{{ $t("message.educationLink") }}</router-link>
           </li>
           <li class="round-list__element">
-            <router-link to="/pomodoro">Pomodoro Tracker</router-link>
+            <router-link to="/pomodoro">{{ $t("message.pomodoroLink") }}</router-link>
           </li>
           <li class="round-list__element">
-            <router-link to="/stress">Stress level</router-link>
+            <router-link to="/stress">{{ $t("message.stressLink") }}</router-link>
           </li>
         </ul>
       </nav>
@@ -21,18 +21,20 @@
         </div>
         <div class="user-profile__name">Lisa</div>
       </div>
-
+      <langChanger/>
       <Deadline/>
     </div>
   </section>
 </template>
 
 <script>
+import langChanger from '../langChanger/langChanger.vue';
 import Deadline from '../Deadline/Deadline.vue';
 export default {
   name: "MainList",
   components: {
-    Deadline
+    Deadline,
+    langChanger
   }
 };
 
