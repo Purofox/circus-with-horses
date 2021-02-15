@@ -41,7 +41,7 @@ export default {
     },
 
     mounted() {
-      let timer_now = $cookies.get('timer_now');
+      let timer_now = this.$cookies.get('timer_now');
       if(timer_now < this.timer) {
         this.timer = timer_now;
         this.startTimer();
@@ -78,7 +78,7 @@ export default {
         return (time < 10 ? '0' : '') + time;
       },
       save_timer() {
-        $cookies.set('timer_now' , this.timer);
+        this.$cookies.set('timer_now' , this.timer);
       },
       playMethod() {
         const audio = new Audio('../../assets/audio/alarm-clock-bell.mp3');
