@@ -22,6 +22,8 @@
 
 <script>
 import BackToMain from '../BackToMain/BackToMain.vue';
+import $cookies from "core-js/internals/internal-state";
+
 export default {
     name: "Pomodoro",
     components: {
@@ -39,7 +41,7 @@ export default {
     },
 
     created() {
-      let timer_now = localStorage.getItem('timer_now');
+      let timer_now = $cookies.get('timer_now');
       if(timer_now < this.timer) {
         this.timer = timer_now;
         this.startTimer();
@@ -76,7 +78,7 @@ export default {
         return (time < 10 ? '0' : '') + time;
       },
       save_timer() {
-        localStorage.setItem('timer_now' , this.timer);
+        $cookies.set('timer_now' , this.timer);
       },
       playMethod() {
         const audio = new Audio('../../assets/audio/alarm-clock-bell.mp3');

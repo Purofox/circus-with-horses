@@ -13,6 +13,7 @@
     "lodash": "^4.17.20",
     "moment": "^2.29.1",
     "vue": "^2.6.11",
+    "vue-cookies": "^1.7.4",
     "vue-i18n": "^8.22.4",
     "vue-lodash": "^2.1.2",
     "vue-router": "^3.5.0",
