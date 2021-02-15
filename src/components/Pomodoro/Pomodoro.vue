@@ -9,8 +9,8 @@
       </div>
     </div>
     <div class="timer-control">
-      <button class="control" :disabled="isDisabled" @click="startTimer">Start</button>
-      <button class="control" @click="resetTimer">Reset</button>
+      <button class="control control--start" :disabled="isDisabled" @click="startTimer">Start</button>
+      <button class="control control--reset" @click="resetTimer">Reset</button>
     </div>
     <div v-if="showModal" class="dialog">
       Time to rest
@@ -40,7 +40,7 @@ export default {
       };
     },
 
-    created() {
+    mounted() {
       let timer_now = $cookies.get('timer_now');
       if(timer_now < this.timer) {
         this.timer = timer_now;
@@ -54,17 +54,16 @@ export default {
         if(this.timer === 0 && this.sessionName === 'Work') {
           this.timer = 5*60;
           this.sessionName = 'Rest';
-          this.save_timer();
         } if (this.timer === 0 && this.sessionName === 'Rest') {
           this.timer = 25*60;
           this.sessionName = 'Work';
-          this.save_timer();
         }
       },
       startTimer () {
         this.isDisabled = true;
         this.interval = setInterval(() => {
           this.timer--;
+          this.save_timer();
           this.check_timer_completed();
         },1000);
       },
@@ -73,6 +72,7 @@ export default {
         this.timer = 25*60;
         this.sessionName = 'Work';
         this.isDisabled = false;
+        this.$cookies.remove('timer_now');
       },
       padTime (time){
         return (time < 10 ? '0' : '') + time;
