@@ -20,8 +20,18 @@ export default {
 <style scoped>
   .locale-changer {
     cursor: pointer;
-    left: 5vw;
+    left: 2vw;
     position: absolute;
-    top: 5vh;
+    top: 4vh;
+  }
+
+  .locale-changer select {
+    background: #0009;
+    border-radius: 15%;
+    color: #fff;
+    font-size: 17px;
+    height: 30px;
+    padding: 0 5px;
+    width: 50px;
   }
 </style>
