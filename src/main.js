@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import router from './routes';
+import store from "./store";
 import App from './App.vue';
 import VueLodash from 'vue-lodash';
 import lodash from 'lodash';
@@ -49,6 +50,7 @@ const i18n = new VueI18n({
 new Vue({
   i18n,
   router: router,
+  store: store,
   render: h => h(App),
 }).$mount('#app');
 
