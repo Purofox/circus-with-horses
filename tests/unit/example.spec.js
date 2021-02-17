@@ -1,5 +1,8 @@
 import { shallowMount } from '@vue/test-utils';
 import Pomodoro from '@/components/Pomodoro/Pomodoro.vue';
+import VueCookies from 'vue-cookies';
+import Vue from "vue";
+Vue.use(VueCookies);
 
 describe('Pomodoro.vue', () => {
   it('отображает корректную разметку', () => {
@@ -12,4 +15,9 @@ describe('Pomodoro.vue', () => {
     button.trigger('click')
     expect(wrapper.vm.sessionName).toBe('Work')
   });
+  it('Старт таймера', () => {
+    const mockFn = jest.fn();
+    mockFn();
+    expect(mockFn).toHaveBeenCalled();
+  })
 });

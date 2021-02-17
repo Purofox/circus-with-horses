@@ -12,9 +12,8 @@
       <button class="control control--start" :disabled="isDisabled" @click="startTimer">Start</button>
       <button class="control control--reset" @click="resetTimer">Reset</button>
     </div>
-    <div v-if="showModal" class="dialog">
-      Time to rest
-      <div class="close" @click="showModal = false">x</div>
+    <div class="change-time">
+      <input class="change-time__input" type="text" name="WorkSession" v-model="minutes">
     </div>
     <BackToMain/>
   </div>
@@ -35,7 +34,6 @@ export default {
         sessionName: "Work",
         interval: '',
         edit: false,
-        showModal: false,
         isDisabled: false
       };
     },
@@ -139,25 +137,12 @@ export default {
     width: 100px;
   }
 
-  .dialog {
-    position: absolute;
-    left: 0;
-    right: 0;
-    margin: auto;
-    top: 0;
-    bottom: 0;
-    width: 25vw;
-    height: 150px;
-    background: #20b88e;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-  }
-
-  .close {
-    position: absolute;
-    right: 5px;
-    top: 5px;
+  .change-time__input {
+    border: 0;
+    border-radius: .25rem;
+    font-size: 1rem;
+    font-weight: 400;
+    margin: 5px 0;
+    padding: .375rem .75rem;
   }
 </style>
