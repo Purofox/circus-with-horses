@@ -35,11 +35,14 @@
   align-items: center;
   background: #429EA6;
   border-radius: 50%;
+  box-sizing: border-box;
   color: #fff;
   display: flex;
   flex-direction: column;
   font-size: 20px;
-  padding: 30px;
+  height: 200px;
+  justify-content: center;
+  width: 200px;
 }
 
 .weather-widget img {

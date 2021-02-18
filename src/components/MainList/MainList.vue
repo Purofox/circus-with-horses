@@ -9,8 +9,11 @@
           <li class="round-list__element">
             <router-link to="/pomodoro">{{ $t("message.pomodoroLink") }}</router-link>
           </li>
+<!--          <li class="round-list__element">-->
+<!--            <router-link to="/stress">{{ $t("message.stressLink") }}</router-link>-->
+<!--          </li>-->
           <li class="round-list__element">
-            <router-link to="/stress">{{ $t("message.stressLink") }}</router-link>
+            <router-link to="/weather-tips">{{ $t("message.weatherLink") }}</router-link>
           </li>
         </ul>
       </nav>

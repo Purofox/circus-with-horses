@@ -1,8 +1,9 @@
 <template>
   <div class="prediction">
-    <div class="tips">
-      <div class="prediction-degrees">10 C</div>
-      <div class="prediction-tips">Keep calm and nadevay podstaniki</div>
+    <div class="tips" v-if="this.$store.state.dataIsRecived">
+      <div class="prediction-degrees">{{ weather.temp }}<span>°C</span></div>
+      <div class="prediction-status">{{ weather.weather.description }}</div>
+      <div class="prediction-tips">{{ this.tips }}</div>
     </div>
     <BackToMain/>
   </div>
@@ -12,9 +13,30 @@
   import BackToMain from '../BackToMain/BackToMain.vue';
   export default {
     name: "WeatherPrediction",
+    data() {
+      return {
+        tips: '',
+      };
+    },
     components: {
       BackToMain
     },
+    computed: {
+      weather() {
+        return this.$store.state.weather;
+      }
+    },
+    created() {
+      this.$store.dispatch("updateWeather");
+
+      if (this.weather.temp < 0) {
+        this.tips = 'Keep calm and nadevay podstaniki';
+      } else if  (this.weather.temp > 24) {
+        this.tips = 'Hell and Israel';
+      } else {
+        this.tips = 'Good weather';
+      }
+    }
   };
 </script>
 
