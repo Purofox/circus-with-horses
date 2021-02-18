@@ -1,9 +1,9 @@
 <template>
-  <div>
+  <div class="weather">
     <div v-if="this.$store.state.dataIsRecived" class="weather-widget">
-      <p class="weather-widget__city">{{ weather.city_name }}</p>
-      <h2 class="weather-widget__temp">{{ weather.temp }}<span>°C</span></h2>
-      <p class="weather-widget__status">{{ weather.weather.description }}</p>
+      <div class="weather-widget__city">{{ weather.city_name }}</div>
+      <div class="weather-widget__temp">{{ weather.temp }}<span>°C</span></div>
+      <div class="weather-widget__status">{{ weather.weather.description }}</div>
     </div>
     <div v-else class="weather-widget">
       <img src="../../assets/001-loading.svg" alt="">
@@ -26,33 +26,32 @@
 </script>
 
 <style scoped>
+.weather {
+  position: absolute;
+  right: 5vw;
+  top: 5vw;
+}
 .weather-widget {
+  align-items: center;
+  background: #429EA6;
+  border-radius: 50%;
+  color: #fff;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  color: #429EA6;
+  font-size: 20px;
+  padding: 30px;
 }
 
 .weather-widget img {
   width: 50px;
 }
 
-.weather-widget__city {
-  font-size: 20px;
-  margin: 0;
-}
-
 .weather-widget__temp {
-  display: flex;
-  align-items: flex-start;
-  color: #16F4D0;
-  font-size: 200px;
-  font-weight: 200;
-  margin: 0;
+  margin: 5px 0;
 }
 
 .weather-widget__status {
-  font-size: 20px;
-  margin: 0;
+  font-size: 16px;
 }
+
 </style>
