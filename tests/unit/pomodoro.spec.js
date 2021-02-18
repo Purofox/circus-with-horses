@@ -5,7 +5,7 @@ import Vue from "vue";
 Vue.use(VueCookies);
 
 describe('Pomodoro.vue', () => {
-  it('отображает корректную разметку', () => {
+  it('Отображение корректной разметки', () => {
     const wrapper = shallowMount(Pomodoro)
     expect(wrapper.html()).toContain('<span class="minute">25</span>')
   });
@@ -15,7 +15,7 @@ describe('Pomodoro.vue', () => {
     button.trigger('click')
     expect(wrapper.vm.sessionName).toBe('Work')
   });
-  it('Старт таймера', () => {
+  it('Тест мок функций', () => {
     const mockFn = jest.fn();
     mockFn();
     expect(mockFn).toHaveBeenCalled();
