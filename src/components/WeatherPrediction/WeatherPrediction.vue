@@ -53,12 +53,12 @@
     border-radius: 50%;
     display: flex;
     flex-direction: column;
-    height: 250px;
+    height: 300px;
     justify-content: center;
     margin: 0 auto;
     padding: 30px;
     text-align: center;
-    width: 250px;
+    width: 300px;
   }
 
   .prediction-degrees {

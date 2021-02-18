@@ -28,8 +28,8 @@
 <style scoped>
 .weather {
   position: absolute;
-  right: 5vw;
-  top: 5vw;
+  right: 2vw;
+  top: 2vw;
 }
 .weather-widget {
   align-items: center;
