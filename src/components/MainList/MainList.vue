@@ -23,6 +23,7 @@
       </div>
       <langChanger/>
       <Deadline/>
+      <WeatherWidget/>
     </div>
   </section>
 </template>
@@ -30,11 +31,13 @@
 <script>
 import langChanger from '../langChanger/langChanger.vue';
 import Deadline from '../Deadline/Deadline.vue';
+import WeatherWidget from '../WeatherWidget/WeatherWidget.vue';
 export default {
   name: "MainList",
   components: {
     Deadline,
-    langChanger
+    langChanger,
+    WeatherWidget
   }
 };
 
