@@ -1,8 +1,8 @@
 <template>
   <div class="prediction">
     <div class="tips" v-if="this.$store.state.dataIsRecived">
-      <div class="prediction-degrees">{{ this.$store.state.weather.temp }}<span>°C</span></div>
-      <div class="prediction-status">{{ this.$store.state.weather.weather.description }}</div>
+      <div class="prediction-degrees">{{ weather.temp }}<span>°C</span></div>
+      <div class="prediction-status">{{ weather.weather.description }}</div>
       <div class="prediction-tips">{{ this.$store.state.tips }}</div>
     </div>
     <BackToMain/>
@@ -13,13 +13,13 @@
   import BackToMain from '../BackToMain/BackToMain.vue';
   export default {
     name: "WeatherPrediction",
-    data() {
-      return {
-        tips: '',
-      };
-    },
     components: {
       BackToMain
+    },
+    computed: {
+      weather() {
+        return this.$store.state.weather;
+      }
     },
     created() {
       this.$store.dispatch("updateWeather");

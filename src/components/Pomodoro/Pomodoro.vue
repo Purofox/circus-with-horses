@@ -12,8 +12,9 @@
       <button class="control control--start" :disabled="isDisabled" @click="startTimer">Start</button>
       <button class="control control--reset" @click="resetTimer">Reset</button>
     </div>
-    <div class="change-time">
-      <input class="change-time__input" type="text" name="WorkSession" v-model="minutes">
+    <div class="change-time" v-if="!isAstive">
+      <input class="change-time__input" type="text" name="WorkSession" value="25">
+      <input class="change-time__input" type="text" name="RestSession" value="5">
     </div>
     <BackToMain/>
   </div>
@@ -34,7 +35,8 @@ export default {
         sessionName: "Work",
         interval: '',
         edit: false,
-        isDisabled: false
+        isDisabled: false,
+        isAstive: false
       };
     },
 
@@ -59,6 +61,7 @@ export default {
       },
       startTimer () {
         this.isDisabled = true;
+        this.isAstive = true;
         this.interval = setInterval(() => {
           this.timer--;
           this.save_timer();
@@ -70,6 +73,7 @@ export default {
         this.timer = 25*60;
         this.sessionName = 'Work';
         this.isDisabled = false;
+        this.isAstive = false;
         this.$cookies.remove('timer_now');
       },
       padTime (time){
@@ -121,7 +125,8 @@ export default {
     width: 220px;
   }
 
-  .timer-control {
+  .timer-control,
+  .change-time {
     display: flex;
     font-size: 24px;
     justify-content: space-around;
@@ -137,9 +142,14 @@ export default {
     width: 100px;
   }
 
+  .change-time {
+    flex-direction: column;
+  }
+
   .change-time__input {
     border: 0;
     border-radius: .25rem;
+    display: block;
     font-size: 1rem;
     font-weight: 400;
     margin: 5px 0;

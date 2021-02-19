@@ -59,7 +59,7 @@ import moment from 'moment';
 <style>
   .deadline-timer {
     align-items: center;
-    background: #b52525;
+    background: #000;
     border-radius: 50%;
     bottom: 0;
     color: #fff;
