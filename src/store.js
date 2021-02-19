@@ -7,7 +7,8 @@ Vue.use(Vuex);
 export default new Vuex.Store({
     state: {
         weather: {},
-        dataIsRecived: false
+        dataIsRecived: false,
+        tips: ''
     },
     mutations: {
         UPDATE_WEATHER(state) {
@@ -16,6 +17,13 @@ export default new Vuex.Store({
                 .then(response => {
                     state.weather = response.data.data[0];
                     state.dataIsRecived = true;
+                    if (state.weather.temp < 0) {
+                        state.tips = 'Keep calm and nadevay podstaniki';
+                    } else if  (this.weather.temp > 25) {
+                        state.tips = 'Hell and Israel';
+                    } else {
+                        state.tips = 'Good weather';
+                    }
                     console.log(response);
                 })
                 .catch(error => {

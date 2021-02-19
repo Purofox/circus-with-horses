@@ -1,9 +1,9 @@
 <template>
   <div class="prediction">
     <div class="tips" v-if="this.$store.state.dataIsRecived">
-      <div class="prediction-degrees">{{ weather.temp }}<span>°C</span></div>
-      <div class="prediction-status">{{ weather.weather.description }}</div>
-      <div class="prediction-tips">{{ this.tips }}</div>
+      <div class="prediction-degrees">{{ this.$store.state.weather.temp }}<span>°C</span></div>
+      <div class="prediction-status">{{ this.$store.state.weather.weather.description }}</div>
+      <div class="prediction-tips">{{ this.$store.state.tips }}</div>
     </div>
     <BackToMain/>
   </div>
@@ -21,21 +21,8 @@
     components: {
       BackToMain
     },
-    computed: {
-      weather() {
-        return this.$store.state.weather;
-      }
-    },
     created() {
       this.$store.dispatch("updateWeather");
-
-      if (this.weather.temp < 0) {
-        this.tips = 'Keep calm and nadevay podstaniki';
-      } else if  (this.weather.temp > 24) {
-        this.tips = 'Hell and Israel';
-      } else {
-        this.tips = 'Good weather';
-      }
     }
   };
 </script>
