@@ -1,5 +1,5 @@
 import axios from "axios";
-const CURRENT_WEATHER = `https://api.weatherbit.io/v2.0/current?city=Tula,RU&key=3e7146c094164969ba3fa45a3d4f214c`;
+const CURRENT_WEATHER = `https://api.weatherbit.io/v2.0/current?city=Tula,RU&key=feea5096c4fb4100aaae9c9c1ea2b3a1`;
 
 const apiClient = axios.create({ // create promise
     baseURL: CURRENT_WEATHER,
