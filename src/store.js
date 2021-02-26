@@ -27,13 +27,13 @@ export default new Vuex.Store({
                 .then(response => {
                     this.state.weather = response.data.data[0];
                     this.state.dataIsRecived = true;
-                    if (this.state.weather.temp < 0) {
-                        this.state.tips = 'Keep calm and nadevay podstaniki';
-                    } else if  (this.weather.temp > 25) {
-                        this.state.tips = 'Hell and Israel';
-                    } else {
-                        this.state.tips = 'Good weather';
-                    }
+                    // if (this.state.weather.temp < 0) {
+                    //     this.state.tips = 'Keep calm and nadevay podstaniki';
+                    // } else if  (this.weather.temp > 25) {
+                    //     this.state.tips = 'Hell and Israel';
+                    // } else {
+                    //     this.state.tips = 'Good weather';
+                    // }
                     console.log(response);
                 })
                 .catch(error => {
