@@ -13,7 +13,7 @@
       <button class="control control--reset" @click="resetTimer">Reset</button>
     </div>
     <div class="change-time" v-if="!isAstive">
-      <input class="change-time__input" type="text" name="WorkSession" value="25">
+      <input class="change-time__input" type="number" name="WorkSession" max="59" value="25" @input="changeTime($event.target.value)">
       <input class="change-time__input" type="text" name="RestSession" value="5">
     </div>
     <BackToMain/>
@@ -32,6 +32,7 @@ export default {
     data() {
       return {
         timer: 25*60,
+        minutesNew: 25*60,
         sessionName: "Work",
         interval: '',
         edit: false,
@@ -42,7 +43,7 @@ export default {
 
     mounted() {
       let timer_now = this.$cookies.get('timer_now');
-      if(timer_now < this.timer) {
+      if(timer_now && timer_now < this.timer) {
         this.timer = timer_now;
         this.startTimer();
       }
@@ -50,11 +51,16 @@ export default {
     },
 
     methods: {
+      changeTime(value) {
+        this.timer = value * 60;
+      },
       check_timer_completed() {
         if(this.timer === 0 && this.sessionName === 'Work') {
+          this.$cookies.remove('timer_now');
           this.timer = 5*60;
           this.sessionName = 'Rest';
         } if (this.timer === 0 && this.sessionName === 'Rest') {
+          this.$cookies.remove('timer_now');
           this.timer = 25*60;
           this.sessionName = 'Work';
         }

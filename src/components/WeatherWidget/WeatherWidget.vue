@@ -1,9 +1,9 @@
 <template>
   <div class="weather">
     <div v-if="this.$store.state.dataIsRecived" class="weather-widget">
-      <div class="weather-widget__city">{{ weather.city_name }}</div>
-      <div class="weather-widget__temp">{{ weather.temp }}<span>°C</span></div>
-      <div class="weather-widget__status">{{ weather.weather.description }}</div>
+      <div class="weather-widget__city">{{ getWeather.city_name }}</div>
+      <div class="weather-widget__temp">{{ getWeather.temp }}<span>°C</span></div>
+      <div class="weather-widget__status">{{ getWeather.weather.description }}</div>
     </div>
     <div v-else class="weather-widget">
       <img src="../../assets/001-loading.svg" alt="">
@@ -12,12 +12,17 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
   export default {
     name: "WeatherWidget",
     computed: {
-      weather() {
-        return this.$store.state.weather;
-      }
+      // weather() {
+      //   return this.$store.getters.getWeather;
+      // }
+      ...mapGetters([
+        'getWeather'
+      ])
     },
     created() {
       this.$store.dispatch("updateWeather");

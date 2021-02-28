@@ -21,9 +21,9 @@
         return this.$store.state.weather;
       }
     },
-    created() {
-      this.$store.dispatch("updateWeather");
-    }
+      created() {
+        this.$store.dispatch("updateWeather");
+      }
   };
 </script>
 

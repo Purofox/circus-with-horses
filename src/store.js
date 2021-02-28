@@ -11,36 +11,35 @@ export default new Vuex.Store({
         tips: ''
     },
     getters: {
-        getWeather() {
-            return this.weather;
+        getWeather(state) {
+            return state.weather;
         }
     },
     mutations: {
-        UPDATE_WEATHER(result) {
-            this.state.weather = result;
+        UPDATE_WEATHER(state, result) {
+            state.weather = result;
+            if (state.weather.temp < 0) {
+                state.tips = 'Keep calm and nadevay podstaniki';
+            } else if  (state.weather.temp > 25) {
+                state.tips = 'Hell and Israel';
+            } else {
+                state.tips = 'Good weather';
+            }
         }
     },
     actions: {
         updateWeather(context) {
-            const result = service
+            service
                 .getWeather()
                 .then(response => {
-                    this.state.weather = response.data.data[0];
                     this.state.dataIsRecived = true;
-                    // if (this.state.weather.temp < 0) {
-                    //     this.state.tips = 'Keep calm and nadevay podstaniki';
-                    // } else if  (this.weather.temp > 25) {
-                    //     this.state.tips = 'Hell and Israel';
-                    // } else {
-                    //     this.state.tips = 'Good weather';
-                    // }
                     console.log(response);
+                    context.commit("UPDATE_WEATHER", response.data.data[0]);
                 })
                 .catch(error => {
                     console.log("There was an error:", error.response);
                     this.state.dataIsRecived = false;
                 });
-            context.commit("UPDATE_WEATHER", result);
         }
     }
 });
