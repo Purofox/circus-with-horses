@@ -67,7 +67,7 @@ import moment from 'moment';
     flex-direction: column;
     justify-content: center;
     height: 200px;
-    left: 10px;
+    left: 2vw;
     margin: 20px auto;
     padding: 10px;
     position: absolute;

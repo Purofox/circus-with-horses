@@ -9,12 +9,12 @@
       </div>
     </div>
     <div class="timer-control">
-      <button class="control" :disabled="isDisabled" @click="startTimer">Start</button>
-      <button class="control" @click="resetTimer">Reset</button>
+      <button class="control control--start" :disabled="isDisabled" @click="startTimer">Start</button>
+      <button class="control control--reset" @click="resetTimer">Reset</button>
     </div>
-    <div v-if="showModal" class="dialog">
-      Time to rest
-      <div class="close" @click="showModal = false">x</div>
+    <div class="change-time" v-if="!isAstive">
+      <input class="change-time__input" type="text" name="WorkSession" value="25">
+      <input class="change-time__input" type="text" name="RestSession" value="5">
     </div>
     <BackToMain/>
   </div>
@@ -22,6 +22,8 @@
 
 <script>
 import BackToMain from '../BackToMain/BackToMain.vue';
+import $cookies from "core-js/internals/internal-state";
+
 export default {
     name: "Pomodoro",
     components: {
@@ -33,13 +35,13 @@ export default {
         sessionName: "Work",
         interval: '',
         edit: false,
-        showModal: false,
-        isDisabled: false
+        isDisabled: false,
+        isAstive: false
       };
     },
 
-    created() {
-      let timer_now = localStorage.getItem('timer_now');
+    mounted() {
+      let timer_now = this.$cookies.get('timer_now');
       if(timer_now < this.timer) {
         this.timer = timer_now;
         this.startTimer();
@@ -52,17 +54,17 @@ export default {
         if(this.timer === 0 && this.sessionName === 'Work') {
           this.timer = 5*60;
           this.sessionName = 'Rest';
-          this.save_timer();
         } if (this.timer === 0 && this.sessionName === 'Rest') {
           this.timer = 25*60;
           this.sessionName = 'Work';
-          this.save_timer();
         }
       },
       startTimer () {
         this.isDisabled = true;
+        this.isAstive = true;
         this.interval = setInterval(() => {
           this.timer--;
+          this.save_timer();
           this.check_timer_completed();
         },1000);
       },
@@ -71,12 +73,14 @@ export default {
         this.timer = 25*60;
         this.sessionName = 'Work';
         this.isDisabled = false;
+        this.isAstive = false;
+        this.$cookies.remove('timer_now');
       },
       padTime (time){
         return (time < 10 ? '0' : '') + time;
       },
       save_timer() {
-        localStorage.setItem('timer_now' , this.timer);
+        this.$cookies.set('timer_now' , this.timer);
       },
       playMethod() {
         const audio = new Audio('../../assets/audio/alarm-clock-bell.mp3');
@@ -121,7 +125,8 @@ export default {
     width: 220px;
   }
 
-  .timer-control {
+  .timer-control,
+  .change-time {
     display: flex;
     font-size: 24px;
     justify-content: space-around;
@@ -137,25 +142,17 @@ export default {
     width: 100px;
   }
 
-  .dialog {
-    position: absolute;
-    left: 0;
-    right: 0;
-    margin: auto;
-    top: 0;
-    bottom: 0;
-    width: 25vw;
-    height: 150px;
-    background: #20b88e;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
+  .change-time {
+    flex-direction: column;
   }
 
-  .close {
-    position: absolute;
-    right: 5px;
-    top: 5px;
+  .change-time__input {
+    border: 0;
+    border-radius: .25rem;
+    display: block;
+    font-size: 1rem;
+    font-weight: 400;
+    margin: 5px 0;
+    padding: .375rem .75rem;
   }
 </style>
