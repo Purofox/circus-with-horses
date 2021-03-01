@@ -32,7 +32,7 @@ export default {
     data() {
       return {
         timer: 25*60,
-        minutesNew: 25*60,
+        restTimer: 5*60,
         sessionName: "Work",
         interval: '',
         edit: false,
@@ -57,7 +57,7 @@ export default {
       check_timer_completed() {
         if(this.timer === 0 && this.sessionName === 'Work') {
           this.$cookies.remove('timer_now');
-          this.timer = 5*60;
+          this.timer = this.restTimer;
           this.sessionName = 'Rest';
         } if (this.timer === 0 && this.sessionName === 'Rest') {
           this.$cookies.remove('timer_now');

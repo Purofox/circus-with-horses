@@ -18,7 +18,7 @@
     },
     computed: {
       weather() {
-        return this.$store.state.weather;
+        return this.$store.getters.getWeather;
       }
     },
       created() {

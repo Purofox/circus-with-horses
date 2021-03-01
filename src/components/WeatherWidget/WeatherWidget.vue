@@ -17,9 +17,6 @@ import { mapGetters } from 'vuex';
   export default {
     name: "WeatherWidget",
     computed: {
-      // weather() {
-      //   return this.$store.getters.getWeather;
-      // }
       ...mapGetters([
         'getWeather'
       ])
