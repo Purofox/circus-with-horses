@@ -1,13 +1,12 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import service from "./services/service.js";
-
 Vue.use(Vuex);
 
 export default new Vuex.Store({
     state: {
         weather: {},
-        dataIsRecived: false,
+        isLoading: false,
         tips: ''
     },
     getters: {
@@ -32,14 +31,27 @@ export default new Vuex.Store({
             service
                 .getWeather()
                 .then(response => {
-                    this.state.dataIsRecived = true;
+                    this.state.isLoading = true;
                     console.log(response);
                     context.commit("UPDATE_WEATHER", response.data.data[0]);
                 })
                 .catch(error => {
                     console.log("There was an error:", error.response);
-                    this.state.dataIsRecived = false;
+                    this.state.isLoading = false;
                 });
         }
     }
 });
+
+export const mutations = {
+    UPDATE_WEATHER(state, result) {
+        state.weather = result;
+    }
+};
+
+export const getters = {
+    getWeather(state) {
+        return state.weather;
+    }
+};
+

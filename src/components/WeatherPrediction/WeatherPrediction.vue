@@ -1,6 +1,6 @@
 <template>
   <div class="prediction">
-    <div class="tips" v-if="this.$store.state.dataIsRecived">
+    <div class="tips" v-if="this.$store.state.isLoading">
       <div class="prediction-degrees">{{ weather.temp }}<span>°C</span></div>
       <div class="prediction-status">{{ weather.weather.description }}</div>
       <div class="prediction-tips">{{ this.$store.state.tips }}</div>

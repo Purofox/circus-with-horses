@@ -1,6 +1,6 @@
 <template>
   <div class="weather">
-    <div v-if="this.$store.state.dataIsRecived" class="weather-widget">
+    <div v-if="this.$store.state.isLoading" class="weather-widget">
       <div class="weather-widget__city">{{ getWeather.city_name }}</div>
       <div class="weather-widget__temp">{{ getWeather.temp }}<span>°C</span></div>
       <div class="weather-widget__status">{{ getWeather.weather.description }}</div>
