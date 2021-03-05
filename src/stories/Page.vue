@@ -54,6 +54,8 @@
         </svg>
         Viewports addon in the toolbar
       </div>
+
+      <my-tabs />
     </section>
   </article>
 </template>
@@ -61,11 +63,12 @@
 <script>
 import './page.css';
 import MyHeader from './Header.vue';
+import MyTabs from './Tabs.vue';
 
 export default {
   name: 'my-page',
 
-  components: { MyHeader },
+  components: { MyHeader, MyTabs },
 
   props: {
     user: {

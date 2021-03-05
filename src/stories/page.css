@@ -4,12 +4,11 @@ section {
   line-height: 24px;
   padding: 48px 20px;
   margin: 0 auto;
-  max-width: 600px;
+  max-width: 65vw;
   color: #333;
 }
 
 h2 {
-  font-weight: 900;
   font-size: 32px;
   line-height: 1;
   margin: 0 0 4px;
