@@ -1,15 +1,14 @@
-import MyTabs from './Tabs';
-
+import MyLoader from './Loader';
 export default {
-    title: 'Example/Tabs',
-    component: MyTabs,
+    title: 'Example/Loader',
+    component: MyLoader,
 };
 
 const Template = (args, { argTypes }) => ({
     props: Object.keys(argTypes),
-    components: { MyTabs },
+    components: { MyLoader },
     template:
-        '<my-tabs />',
+        '<my-loader />',
 });
 
 export const LoggedIn = Template.bind({});

@@ -6,7 +6,7 @@
       <a @click="activetab='2'" :class="[ activetab === '2' ? 'active' : '' ]">Mork</a>
       <a @click="activetab='3'" :class="[ activetab === '3' ? 'active' : '' ]">Khorne</a>
       <a @click="activetab='4'" :class="[ activetab === '4' ? 'active' : '' ]">Tzeentch</a>
-      <a @click="activetab='4'" :class="[ activetab === '5' ? 'active' : '' ]">The Emperor</a>
+      <a @click="activetab='5'" :class="[ activetab === '5' ? 'active' : '' ]">The Emperor</a>
     </div>
 
     <div class="content">
