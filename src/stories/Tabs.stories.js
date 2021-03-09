@@ -12,4 +12,4 @@ const Template = (args, { argTypes }) => ({
         '<my-tabs />',
 });
 
-export const LoggedIn = Template.bind({});
+export const Loader = Template.bind({});
