@@ -27,7 +27,7 @@ export default new Vuex.Store({
         }
     },
     actions: {
-        updateWeather(context) {
+        changeWeather(context) {
             service
                 .getWeather()
                 .then(response => {

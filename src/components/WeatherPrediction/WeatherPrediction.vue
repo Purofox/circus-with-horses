@@ -22,7 +22,7 @@
       }
     },
       created() {
-        this.$store.dispatch("updateWeather");
+        this.$store.dispatch("changeWeather");
       }
   };
 </script>

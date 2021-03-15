@@ -10,7 +10,7 @@ import VueCookies from 'vue-cookies';
 
 Vue.use(Vuex);
 Vue.use(VueI18n);
-Vue.use(VueLodash, { name: 'custom' , lodash: lodash });
+Vue.use(VueLodash, { name: 'custom', lodash: lodash });
 Vue.use(VueCookies);
 
 Vue.config.productionTip = false;
@@ -22,7 +22,7 @@ const messages = {
       pomodoroLink: 'Pomodoro tracker',
       stressLink: 'Stress level',
       weatherLink: 'Weather tips',
-      probation: 'Until the end of the probationary period',
+      probation: 'Until the end of the probationary period'
     }
   },
   ru: {
@@ -31,7 +31,7 @@ const messages = {
       pomodoroLink: 'Помидорка',
       stressLink: 'Уровень стресса',
       weatherLink: 'Погода на день',
-      probation: 'До конца испытательного срока',
+      probation: 'До конца испытательного срока'
     }
   },
   fr: {
@@ -40,7 +40,7 @@ const messages = {
       pomodoroLink: 'Suivi de Pomodoro',
       stressLink: 'Niveau de stress',
       weatherLink: 'Conseils météo',
-      probation: 'Jusquà la fin de la période probatoire',
+      probation: 'Jusquà la fin de la période probatoire'
     }
   }
 };
@@ -54,7 +54,7 @@ new Vue({
   i18n,
   router: router,
   store: store,
-  render: h => h(App),
+  render: h => h(App)
 }).$mount('#app');
 
 i18n.locale = 'en';

@@ -65,16 +65,16 @@ export default {
           this.sessionName = 'Work';
         }
       },
-      startTimer () {
+      startTimer() {
         this.isDisabled = true;
         this.isAstive = true;
         this.interval = setInterval(() => {
           this.timer--;
           this.save_timer();
           this.check_timer_completed();
-        },1000);
+        }, 1000);
       },
-      resetTimer () {
+      resetTimer() {
         clearInterval(this.interval);
         this.timer = 25*60;
         this.sessionName = 'Work';
@@ -82,11 +82,11 @@ export default {
         this.isAstive = false;
         this.$cookies.remove('timer_now');
       },
-      padTime (time){
+      padTime(time){
         return (time < 10 ? '0' : '') + time;
       },
       save_timer() {
-        this.$cookies.set('timer_now' , this.timer);
+        this.$cookies.set('timer_now', this.timer);
       },
       playMethod() {
         const audio = new Audio('../../assets/audio/alarm-clock-bell.mp3');
@@ -103,7 +103,7 @@ export default {
         const minutes = Math.trunc((this.timer) / 60) % 60;
         return this.padTime(minutes);
       }
-    },
+    }
   };
 </script>
 

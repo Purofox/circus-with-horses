@@ -10,7 +10,7 @@
 import './loader.css';
   export default {
     name: "my-loader"
-  }
+  };
 </script>
 
 <style scoped>

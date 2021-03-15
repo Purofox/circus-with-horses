@@ -22,7 +22,7 @@ import { mapGetters } from 'vuex';
       ])
     },
     created() {
-      this.$store.dispatch("updateWeather");
+      this.$store.dispatch("changeWeather");
     }
   };
 </script>

@@ -46,9 +46,9 @@
       </div>
       <div class="footer" v-show="todos.length" v-cloak>
         <div class="filters">
-          <button @click="FilterKey = 'all'" :class="{ selected: FilterKey == 'all' }">All</button>
-          <button @click="FilterKey = 'active'" :class="{ selected: FilterKey == 'active' }">Active</button>
-          <button @click="FilterKey = 'completed'" :class="{ selected: FilterKey == 'completed' }">Completed</button>
+          <button @click="FilterKey = 'all'" :class="{ selected: FilterKey === 'all' }">All</button>
+          <button @click="FilterKey = 'active'" :class="{ selected: FilterKey === 'active' }">Active</button>
+          <button @click="FilterKey = 'completed'" :class="{ selected: FilterKey === 'completed' }">Completed</button>
         </div>
         <button
             class="clear-completed"
@@ -67,30 +67,30 @@
   import BackToMain from '../BackToMain/BackToMain.vue';
   let STORAGE_KEY = "stay-focused-todo";
   let todoStorage = {
-    fetch: function() {
+    fetch: function () {
       let todos = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
-      todos.forEach(function(todo, index) {
+      todos.forEach(function (todo, index) {
         todo.id = index;
       });
       todoStorage.uid = todos.length;
       return todos;
     },
-    save: function(todos) {
+    save: function (todos) {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(todos));
     }
   };
 
   let filters = {
-    all: function(todos) {
+    all: function (todos) {
       return todos;
     },
-    active: function(todos) {
-      return todos.filter(function(todo) {
+    active: function (todos) {
+      return todos.filter(function (todo) {
         return !todo.completed;
       });
     },
-    completed: function(todos) {
-      return todos.filter(function(todo) {
+    completed: function (todos) {
+      return todos.filter(function (todo) {
         return todo.completed;
       });
     }
@@ -112,7 +112,7 @@
 
     watch: {
       todos: {
-        handler: function(todos) {
+        handler: function (todos) {
           todoStorage.save(todos);
         },
         deep: true
@@ -120,18 +120,18 @@
     },
 
     computed: {
-      filteredTodos: function() {
+      filteredTodos: function () {
         return filters[this.FilterKey](this.todos);
       },
-      remaining: function() {
+      remaining: function () {
         return filters.active(this.todos).length;
       },
       allDone: {
-        get: function() {
+        get: function () {
           return this.remaining === 0;
         },
-        set: function(value) {
-          this.todos.forEach(function(todo) {
+        set: function (value) {
+          this.todos.forEach(function (todo) {
             todo.completed = value;
           });
         }
@@ -139,7 +139,7 @@
     },
 
     methods: {
-      addTodo: function() {
+      addTodo: function () {
         let value = this.newTodo && this.newTodo.trim();
         if (!value) {
           return;
@@ -152,16 +152,16 @@
         this.newTodo = "";
       },
 
-      removeTodo: function(todo) {
+      removeTodo: function (todo) {
         this.todos.splice(this.todos.indexOf(todo), 1);
       },
 
-      editTodo: function(todo) {
+      editTodo: function (todo) {
         this.beforeEditCache = todo.title;
         this.editedTodo = todo;
       },
 
-      doneEdit: function(todo) {
+      doneEdit: function (todo) {
         if (!this.editedTodo) {
           return;
         }
@@ -172,23 +172,23 @@
         }
       },
 
-      cancelEdit: function(todo) {
+      cancelEdit: function (todo) {
         this.editedTodo = null;
         todo.title = this.beforeEditCache;
       },
 
-      removeCompleted: function() {
+      removeCompleted: function () {
         this.todos = filters.active(this.todos);
-      },
+      }
     },
 
     directives: {
-      "todo-focus": function(el, binding) {
+      "todo-focus": function (el, binding) {
         if (binding.value) {
           el.focus();
         }
       }
-    },
+    }
   };
 
 </script>

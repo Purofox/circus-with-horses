@@ -12,7 +12,7 @@ export default {
       console.log(this.lodash.random(20));
       console.log(this._.random(20));
       console.log(this.custom.random(20));
-    },
+    }
   }
 };
 </script>

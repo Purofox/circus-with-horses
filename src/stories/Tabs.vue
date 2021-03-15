@@ -38,8 +38,8 @@ import './tabs.css';
     data() {
       return {
         activetab: '1'
-      }
-    },
-  }
+      };
+    }
+  };
 </script>
 

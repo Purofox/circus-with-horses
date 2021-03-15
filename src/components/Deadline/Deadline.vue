@@ -24,17 +24,17 @@ import moment from 'moment';
       };
     },
     methods: {
-      secondsCounter () {
+      secondsCounter() {
         let component = this;
         component.actualTime = moment().format('X');
-        setTimeout(function(){
+        setTimeout(function (){
           component.secondsCounter();
         }, 1000);
       },
-      getDiffInSeconds () {
+      getDiffInSeconds() {
         return moment("2021-4-12 00:00:00").format('X') - this.actualTime;
       },
-      compute () {
+      compute() {
         let duration = moment.duration(this.getDiffInSeconds(), "seconds");
         this.years = duration.years() > 0 ? duration.years() : 0;
         this.months = duration.months() > 0 ? duration.months() : 0;
@@ -44,12 +44,12 @@ import moment from 'moment';
         this.seconds = duration.seconds() > 0 ? duration.seconds() : 0;
       }
     },
-    mounted () {
+    mounted() {
       this.compute();
       this.secondsCounter();
     },
     watch: {
-      actualTime () {
+      actualTime() {
         this.compute();
       }
     }
