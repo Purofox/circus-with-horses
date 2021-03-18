@@ -1,9 +1,10 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Home from './pages/Home.vue';
-import EducationPlan from './pages/EducationPlan.vue';
-import PomodoroPage from './pages/Pomodoro.vue';
-import WeatherTips from './pages/WeatherTips.vue';
+import Home from '@/pages/Home.vue';
+import EducationPlan from '@/pages/EducationPlan.vue';
+import PomodoroPage from '@/pages/Pomodoro.vue';
+import WeatherTips from '@/pages/WeatherTips.vue';
+import Obligation from '@/pages/Obligation.vue';
 
 Vue.use(Router);
 
@@ -29,6 +30,11 @@ const router = new Router({
             path: '/weather-tips',
             name: 'weatherTips',
             component: WeatherTips
+        },
+        {
+            path: '/obligation',
+            name: 'obligation',
+            component: Obligation
         }
     ]
 });
