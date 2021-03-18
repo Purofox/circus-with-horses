@@ -301,7 +301,7 @@
     display: block;
     width: calc(100% - 43px);
     padding: 12px 16px;
-    margin: 0 0 0 43px;
+    margin-left: 43px;
   }
 
   .todo-list li.editing .view {

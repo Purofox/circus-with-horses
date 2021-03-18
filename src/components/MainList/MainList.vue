@@ -9,9 +9,6 @@
           <li class="round-list__element">
             <router-link to="/pomodoro">{{ $t("message.pomodoroLink") }}</router-link>
           </li>
-<!--          <li class="round-list__element">-->
-<!--            <router-link to="/stress">{{ $t("message.stressLink") }}</router-link>-->
-<!--          </li>-->
           <li class="round-list__element">
             <router-link to="/weather-tips">{{ $t("message.weatherLink") }}</router-link>
           </li>
@@ -32,9 +29,9 @@
 </template>
 
 <script>
-import langChanger from '../langChanger/langChanger.vue';
-import Deadline from '../Deadline/Deadline.vue';
-import WeatherWidget from '../WeatherWidget/WeatherWidget.vue';
+import langChanger from '@/components/langChanger/langChanger.vue';
+import Deadline from '@/components/Deadline/Deadline.vue';
+import WeatherWidget from '@/components/WeatherWidget/WeatherWidget.vue';
 export default {
   name: "MainList",
   components: {

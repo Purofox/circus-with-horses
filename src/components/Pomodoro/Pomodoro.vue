@@ -8,11 +8,11 @@
         <span class="seconds">{{ seconds }}</span>
       </div>
     </div>
-    <div class="timer-control">
+    <div class="time-flex-container timer-control">
       <button class="control control--start" :disabled="isDisabled" @click="startTimer">Start</button>
       <button class="control control--reset" @click="resetTimer">Reset</button>
     </div>
-    <div class="change-time" v-if="!isAstive">
+    <div class="time-flex-container change-time" v-if="!isAstive">
       <input class="change-time__input" type="number" name="WorkSession" max="59" value="25" @input="changeTime($event.target.value)">
       <input class="change-time__input" type="text" name="RestSession" value="5">
     </div>
@@ -131,13 +131,16 @@ export default {
     width: 220px;
   }
 
-  .timer-control,
-  .change-time {
+  .time-flex-container {
     display: flex;
     font-size: 24px;
     justify-content: space-around;
     margin: 40px auto 0;
     max-width: 250px;
+  }
+
+  .change-time {
+    flex-direction: column;
   }
 
   .control {
@@ -148,17 +151,13 @@ export default {
     width: 100px;
   }
 
-  .change-time {
-    flex-direction: column;
-  }
-
   .change-time__input {
     border: 0;
-    border-radius: .25rem;
+    border-radius: 5px;
     display: block;
-    font-size: 1rem;
+    font-size: 18px;
     font-weight: 400;
     margin: 5px 0;
-    padding: .375rem .75rem;
+    padding: 10px;
   }
 </style>
